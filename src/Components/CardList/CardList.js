@@ -3,49 +3,11 @@ import Card from "../Card/Card";
 
 class CardList extends Component {
     render() {
-        const array = [
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            },
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            },
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            },
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            },
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            },
-            {
-                id: 2343,
-                name: "Carlos Perez",
-                job: "Carpintero",
-                zone: "Buenos Aires"
-            }
-        ]
-
+        const { arrayWorkerToShow } = this.props;
         return (
             <section className="cardlist-container">
             {
-                array && (
+                arrayWorkerToShow && (
                     <>
                         <table className="table" cellSpacing="0">
                             <thead className="table-thead">
@@ -60,10 +22,10 @@ class CardList extends Component {
 
                             <tbody className="table-tbody">
                                 {
-                                    array.map(worker => {
+                                    arrayWorkerToShow.map(worker => {
                                         return (
                                             <Card
-                                                id={worker.id}
+                                                _id={worker._id}
                                                 name={worker.name}
                                                 job={worker.job}
                                                 zone={worker.zone}

@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 
 class NavBar extends Component {
+    constructor(){
+        super();
+        this.state = {
+            logged : true
+        }
+    }
+
+/*     logut = () => {
+        
+    }
+ */
     render() {
         return (
             <>
@@ -14,9 +25,19 @@ class NavBar extends Component {
 
                         {/* NAVBAR LINKS */}
                         <div className="navbar-links-container">
-                            <input type="text" className="input-user" placeholder="Usuario" />
-                            <input type="password" className="input-pass" placeholder="Contraseña" />
-                            <NavLink exact to="/login" className="navbar-link">Login</NavLink>
+                            { 
+                                !this.state.logged ? (
+                                    <>
+                                    <input type="text"  className="input-user" placeholder="Usuario" />
+                                    <input type="password" className="input-pass" placeholder="Contraseña" />
+                                    <NavLink exact to="/login" className="navbar-link" >Login</NavLink>
+                                    </>
+                                ) : (<div>
+                                    {/* TODO */}
+                                    <NavLink exact to="/" className="navbar-link">Logout</NavLink>
+                                </div>)
+                            }
+                           
                         </div>
                     </div>
                 </nav>

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class Card extends Component {
+
     render() {
 
-        const { id, name, job, zone, } = this.props;
+        const { _id, name, job, zone, } = this.props;
 
         return (
             <>
                 <tr className="card-row">
-                    <td>{id}</td>
+                    <td className="card-id">
+                        <CopyToClipboard text={_id}> 
+                            <button className="copy-id" onClick={this.handleClick}>Copy ID</button>
+                        </CopyToClipboard>
+                    </td>
                     <td>{name}</td>
                     <td>{job}</td>
                     <td>{zone}</td>
