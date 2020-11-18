@@ -1,0 +1,52 @@
+.nav {
+    background-color: black;
+    width: 100%;
+}
+
+.navbar-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: auto;
+    padding: 25px 0;
+}
+
+.navbar-title {
+    font-size: 1.7rem;
+}
+
+.fa-tools {
+    color: orange;
+}
+
+.navbar-link {
+    background-color: orange;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
+    margin-left: 1rem;
+    padding: 6px 30px;
+    text-decoration: none;
+}
+
+.navbar-link:hover {
+    background-color: rgba(255, 166, 0, 0.856);
+}
+
+.input-user,
+.input-pass {
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 4px;
+    padding: 5px 10px;
+    outline: none;
+    width: 180px;
+}
+
+.input-user:focus,
+.input-pass:focus {
+    box-shadow: 0 0 10px white;
+}
