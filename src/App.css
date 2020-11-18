@@ -1,3 +1,21 @@
+/* APP */
+.app-subtitle {
+    font-size: 1.7rem;
+    max-width: 1024px;
+    margin: auto;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+}
+
+.main-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: auto;
+    width: 1024px;
+}
+
+/* NAVBAR COMPONENT */
 .nav {
     background-color: black;
     width: 100%;
@@ -10,11 +28,12 @@
     justify-content: space-between;
     max-width: 1024px;
     margin: auto;
+    margin-bottom: 2rem;
     padding: 25px 0;
 }
 
 .navbar-title {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
 }
 
 .fa-tools {
@@ -49,4 +68,140 @@
 .input-user:focus,
 .input-pass:focus {
     box-shadow: 0 0 10px white;
+}
+
+/* CARDLIST COMPONENT */
+
+.cardlist-container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.cardlist-list {
+    font-size: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.table {
+    border: 1px solid silver;
+    margin: auto;
+    width: 100%;
+}
+
+.table .table-thead {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    font-size: 1rem;
+}
+
+.table tr:nth-child(even) {
+    background-color: rgba(192, 192, 192, 0.712);
+}
+
+.table td {
+    border: 1px solid silver;
+    padding: .3rem;
+    text-align: center;
+}
+
+.table th {
+    padding: .5rem;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-button {
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 6px 20px;
+    width: 40%;
+}
+
+.card-button:hover {
+    opacity: .9;
+}
+
+.button-edit {
+    background-color: royalblue;
+}
+
+.button-delete {
+    background-color: rgb(204, 55, 55);
+}
+
+.fa-trash-alt, .fa-edit {
+    margin-right: .3rem;
+}
+
+/* SEARCHBOX COMPONENT */
+
+.searchbox {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.searchbox-search {
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 1rem;
+    outline: none;
+    padding: 0 1rem;
+    margin-right: 1rem;
+    width: 40%;
+}
+
+.searchbox-search:focus {
+    border-color: orange;
+    box-shadow: 0 0 5px rgb(219, 175, 94);
+}
+
+.searchbox-button {
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    padding: .5rem 2rem;
+}
+
+.searchbox-button:hover {
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+.fa-search {
+    margin-right: .5rem;
+}
+
+/* BUTTONADD COMPONENT */
+.buttonadd {
+    background-color: rgb(84, 150, 84);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    width: 20%;
+}
+
+.buttonadd:hover {
+    background-color: rgb(102, 180, 102);
+}
+
+.fa-plus {
+    font-size: 1rem;
+    margin-right: .3rem;
 }
