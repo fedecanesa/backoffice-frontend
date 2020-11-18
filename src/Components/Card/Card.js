@@ -7,14 +7,20 @@ class Card extends Component {
 
         return (
             <>
-                <tr>
+                <tr className="card-row">
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{job}</td>
                     <td>{zone}</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
+                    <td className="buttons-container">
+                        <button className="card-button button-edit">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                        <button className="card-button button-delete">
+                            <i class="fas fa-trash-alt"></i>
+                            Borrar
+                        </button>
                     </td>
                 </tr>
             </>

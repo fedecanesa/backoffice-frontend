@@ -27,49 +27,56 @@ class CardList extends Component {
                 name: "Carlos Perez",
                 job: "Carpintero",
                 zone: "Buenos Aires"
+            },
+            {
+                id: 2343,
+                name: "Carlos Perez",
+                job: "Carpintero",
+                zone: "Buenos Aires"
+            },
+            {
+                id: 2343,
+                name: "Carlos Perez",
+                job: "Carpintero",
+                zone: "Buenos Aires"
             }
         ]
 
         return (
-            <>
-                <section className="cardlist-container">
-                    <h2 className="cardlist-list">Lista de profesionales</h2>
+            <section className="cardlist-container">
+            {
+                array && (
+                    <>
+                        <table className="table" cellSpacing="0">
+                            <thead className="table-thead">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NOMBRE</th>
+                                    <th>OCUPACION</th>
+                                    <th>ZONA</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
 
-                    {
-    
-                        array && (
-                            
-                            <table>
-                                <thead className="card-table-thead">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>NOMBRE</th>
-                                        <th>OCUPACION</th>
-                                        <th>ZONA</th>
-                                        <th>ACTIONS</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {
-                                        array.map(worker => {
-                                            return (
-                                                <Card
-                                                    id={worker.id}
-                                                    name={worker.name}
-                                                    job={worker.job}
-                                                    zone={worker.zone}
-                                                />
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </table>
-                        )
-
-                    }
-                </section>
-            </>
+                            <tbody className="table-tbody">
+                                {
+                                    array.map(worker => {
+                                        return (
+                                            <Card
+                                                id={worker.id}
+                                                name={worker.name}
+                                                job={worker.job}
+                                                zone={worker.zone}
+                                            />
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </>
+                )
+            }
+            </section>
         );
     }
 }
