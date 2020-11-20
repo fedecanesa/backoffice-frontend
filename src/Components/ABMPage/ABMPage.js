@@ -63,7 +63,8 @@ export default class ABMPage extends React.Component {
                 </div>
                 <CardList 
                     handleClickDelete={this.handleClickDelete} 
-                    arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse}/>
+                    arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse}
+                />
             </>
         )
     }

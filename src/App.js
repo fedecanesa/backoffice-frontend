@@ -16,7 +16,8 @@ export default class App extends React.Component {
 
         this.state = {
             pending: [],
-            banners: []
+            banners: [],
+            arrayWorkerToShow:[]
         }
     }
 
@@ -33,8 +34,13 @@ export default class App extends React.Component {
         .catch((error)=>{ /* TODO catch handler */ });
     }
 
+    search = (array)=>{
+        this.setState({ arrayWorkerToShow: array });
+    }
+
 
     render() {
+        const { pending , banners, arrayWorkerToShow } = this.state;
     return (
 
         <div className="App">
@@ -57,13 +63,13 @@ export default class App extends React.Component {
                         <SearchBox />   
                         <ButtonAdd />        
                         </div>
-                       <CardList arrayWorkerToShow={this.state.pending} />
+                       <CardList arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : pending} />
                     </Route>
 
                     <Route exact path="/banners">
                         <NavBar logged={true}/>
                         <div className="main-actions">
-                        <SearchBox />   
+                        <SearchBox search={this.search} />   
                         <ButtonAdd />        
                         </div>
                        <CardList arrayWorkerToShow={this.state.banners} />

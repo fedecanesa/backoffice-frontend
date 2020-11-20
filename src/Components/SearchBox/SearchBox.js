@@ -12,7 +12,6 @@ class SearchBox extends Component {
 
     changeHandler = (event)=>{
         this.setState({ [event.target.name]: event.target.value})
-        console.log(this.state);
     }
     searchHandler = ()=>{
         const { subjectSearch, search } = this.state;
@@ -20,7 +19,7 @@ class SearchBox extends Component {
         search && (
             fetch(`https://api-servi-oficios.herokuapp.com/professionals/${subjectSearch}${search}`)
             .then( response => response.json() )
-            .then( jsonResponse => {this.props.search(jsonResponse)})
+            .then( jsonResponse => {console.log(jsonResponse);this.props.search(jsonResponse)})
             .catch( error => {/* TODO catchHandler */})
         )
     }
