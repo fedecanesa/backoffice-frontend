@@ -1,11 +1,41 @@
 import React, { Component } from 'react';
 
 class SearchBox extends Component {
+    constructor() {
+        super();
+        this.state = {
+            subjectSearch: "",
+            search: ""
+            
+        }
+    }
+
+    changeHandler = (event)=>{
+        this.setState({ [event.target.name]: event.target.value})
+        console.log(this.state);
+    }
+    searchHandler = ()=>{
+        const { subjectSearch, search } = this.state;
+
+        search && (
+            fetch(`https://api-servi-oficios.herokuapp.com/professionals/${subjectSearch}${search}`)
+            .then( response => response.json() )
+            .then( jsonResponse => {this.props.search(jsonResponse)})
+            .catch( error => {/* TODO catchHandler */})
+        )
+    }
+
     render() {
         return (
             <div className="searchbox">
-                <input type="search" className="searchbox-search" placeholder="Buscar" />
-                <button className="searchbox-button"><i class="fas fa-search"></i> BUSCAR</button>
+                <select className="searchbox-select" name="subjectSearch" onChange={this.changeHandler}>
+                    <option value="" >ID</option>
+                    <option value="names/" >Nombre</option>
+                    <option value="jobs/" >Categoría</option>
+                    <option value="zones/" >Zona</option>
+                </select>
+                <input type="search" name="search"className="searchbox-search" placeholder="Buscar" onChange={this.changeHandler}/>
+                <button className="searchbox-button" onClick={this.searchHandler}><i class="fas fa-search"></i> BUSCAR</button>
             </div>
         );
     }

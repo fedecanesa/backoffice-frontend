@@ -14,7 +14,7 @@ class CardList extends Component {
                                 <tr>
                                     <th>ID</th>
                                     <th>NOMBRE</th>
-                                    <th>OCUPACION</th>
+                                    <th>CATEGORÍA</th>
                                     <th>ZONA</th>
                                     <th>ACCIONES</th>
                                 </tr>
