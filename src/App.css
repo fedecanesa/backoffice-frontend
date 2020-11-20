@@ -180,6 +180,13 @@ button , input {
     width: 40%;
 }
 
+.searchbox-select {
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
 .searchbox-search:focus {
     border-color: orange;
     box-shadow: 0 0 5px rgb(219, 175, 94);

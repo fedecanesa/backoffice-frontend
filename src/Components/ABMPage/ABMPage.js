@@ -9,7 +9,8 @@ export default class ABMPage extends React.Component {
         super();
         this.state = {
             arrayResponse: [],
-            logged: true
+            logged: true,
+            arrayWorkerToShow: []
         }
     }
 
@@ -33,6 +34,10 @@ export default class ABMPage extends React.Component {
         });
     }
 
+    search = (array)=>{
+        this.setState({ arrayWorkerToShow: array });
+    }
+
 
     render(){
 
@@ -43,6 +48,7 @@ export default class ABMPage extends React.Component {
             this.setState({logged:false});
         }
 
+        const { arrayResponse, arrayWorkerToShow } = this.state;
         return(
             <>
                 {
@@ -52,10 +58,12 @@ export default class ABMPage extends React.Component {
                 }  
 
                 <div className="main-actions">
-                    <SearchBox />
+                    <SearchBox search={this.search}/>
                     <ButtonAdd />
                 </div>
-                <CardList handleClickDelete={this.handleClickDelete} arrayWorkerToShow={this.state.arrayResponse}/>
+                <CardList 
+                    handleClickDelete={this.handleClickDelete} 
+                    arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse}/>
             </>
         )
     }
