@@ -276,3 +276,13 @@ button , input {
     margin-top: 1rem;
     text-align: center;
 }
+
+/* --------------------------------------------- TODO*/
+.button-list-alt {
+    color: white;
+    text-decoration: none;
+}
+
+.button-list-alt:hover {
+    text-decoration: underline;
+}

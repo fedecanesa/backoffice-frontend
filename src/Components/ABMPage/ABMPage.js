@@ -20,8 +20,11 @@ export default class ABMPage extends React.Component {
         .catch((error)=>{ /* TODO catch handler */ });
     }
 
+    
+
     render(){
 
+        //LOGIN
         const logged = localStorage.getItem("logged") || null;
 
         if(logged === null) {
