@@ -9,7 +9,8 @@ export default class Login extends React.Component {
             admin: "",
             password: "",
             auth:false,
-            logged:false
+            logged:false,
+            backUser:false
         }
     }
 
@@ -35,7 +36,8 @@ export default class Login extends React.Component {
                 .then(data => { 
 
                     if(data.isAuth) {
-                    this.setState({auth:true})
+                        localStorage.setItem("logged", "true");
+                        this.setState({auth:true})
                     }
                     else {
                         this.setState({logged:true});
@@ -47,10 +49,23 @@ export default class Login extends React.Component {
     }
 
     render(){
+
+        const logged = localStorage.getItem("logged") || null;
+
+        if(logged === "true") {
+            this.setState({backUser:true});
+        }
+
         return(
             <>
                 {
                     this.state.auth && (
+                        <Redirect to="/backoffice" />
+                    )
+                }
+
+                {
+                    this.state.backUser && (
                         <Redirect to="/backoffice" />
                     )
                 }

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 
 class NavBar extends Component {
+
+    logout = () => {
+        localStorage.removeItem("logged");
+    }
   
     render() {
         return (
@@ -19,7 +23,7 @@ class NavBar extends Component {
                                 this.props.logged && (
                                     <div>
                                         {/* TODO */}
-                                        <NavLink exact to="/" className="navbar-link">Logout</NavLink>
+                                        <NavLink exact to="/" className="navbar-link" onClick={this.logout}>Logout</NavLink>
                                     </div>  
                                 )
                             }

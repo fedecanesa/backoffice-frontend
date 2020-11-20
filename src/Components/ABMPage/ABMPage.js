@@ -2,12 +2,14 @@ import React from "react";
 import SearchBox from "../SearchBox/SearchBox";
 import ButtonAdd from "../ButtonAdd/ButtonAdd";
 import CardList from "../CardList/CardList";
+import { Redirect } from "react-router-dom";
 
 export default class ABMPage extends React.Component {
     constructor(){
         super();
         this.state = {
-            arrayResponse: []
+            arrayResponse: [],
+            logged: true
         }
     }
 
@@ -19,8 +21,21 @@ export default class ABMPage extends React.Component {
     }
 
     render(){
+
+        const logged = localStorage.getItem("logged") || null;
+
+        if(logged === null) {
+            this.setState({logged:false});
+        }
+
         return(
             <>
+                {
+                    !this.state.logged && (
+                        <Redirect to="/" />
+                    )
+                }  
+
                 <div className="main-actions">
                     <SearchBox />
                     <ButtonAdd />
