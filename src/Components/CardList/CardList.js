@@ -29,6 +29,7 @@ class CardList extends Component {
                                                 name={worker.name}
                                                 job={worker.job}
                                                 zone={worker.zone}
+                                                handleClickDelete={this.props.handleClickDelete}
                                             />
                                         )
                                     })

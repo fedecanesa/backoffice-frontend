@@ -20,7 +20,19 @@ export default class ABMPage extends React.Component {
         .catch((error)=>{ /* TODO catch handler */ });
     }
 
-    
+
+    handleClickDelete = (id) => {
+        const auxArrayResponse = this.state.arrayResponse;
+
+        auxArrayResponse.map((professional, i) => {
+            if(professional._id == id) {
+                auxArrayResponse.splice(i, 1);
+            }
+
+            this.setState({arrayResponse: auxArrayResponse});
+        });
+    }
+
 
     render(){
 
@@ -43,7 +55,7 @@ export default class ABMPage extends React.Component {
                     <SearchBox />
                     <ButtonAdd />
                 </div>
-                <CardList arrayWorkerToShow={this.state.arrayResponse}/>
+                <CardList handleClickDelete={this.handleClickDelete} arrayWorkerToShow={this.state.arrayResponse}/>
             </>
         )
     }
