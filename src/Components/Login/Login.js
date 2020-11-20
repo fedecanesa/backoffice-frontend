@@ -1,12 +1,15 @@
 import React from "react";
-/* import { Link } from "react-router-dom"; */
+import { Redirect } from "react-router-dom";
 
 export default class Login extends React.Component {
     constructor(){
         super();
+
         this.state = {
             admin: "",
-            password: ""
+            password: "",
+            auth:false,
+            logged:false
         }
     }
 
@@ -16,50 +19,68 @@ export default class Login extends React.Component {
         })
     }
 
-    handleLogin = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         const { admin, password } = this.state;
         
         if(admin && password) {
-
+            const RECURSO_CONSULTAS = "https://api-servi-oficios.herokuapp.com/admins";
             const OBJ_ADMIN = { admin , password };
-
-            const RECURSO_CONSULTAS = "https://api-servi-oficios.herokuapp.com/admins"
             
             fetch(RECURSO_CONSULTAS, {
-                method:'POST',
-                body: JSON.stringify(OBJ_ADMIN),
-                headers:{'Content-Type':'application/json'}})
-            .then((response) => response.json())
-            .then((message)=> {!message.err && (console.log("Usuario ok."))
-            .catch(err=> {console.log("Intente nuevamente.")});
+                method: "POST",
+                headers:{"Content-Type":"application/json"},
+                body: JSON.stringify(OBJ_ADMIN)})
+                .then(res => res.json())
+                .then(data => { 
 
-                /* TODO */
-            /* this.setState(); */
-            })
+                    if(data.isAuth) {
+                    this.setState({auth:true})
+                    }
+                    else {
+                        this.setState({logged:true});
+                    }
+
+                })
+                .catch(err => console.log("Err"));
         }
-}
+    }
 
     render(){
         return(
-            <form className="login">
-                <h2 className="login-title">Login</h2>
-                <input 
-                    type="text" 
-                    className="input-user" 
-                    placeholder="Ingrese su usuario" 
-                    name = "user"
-                    onChange={this.handleChange} 
-                />
-                <input 
-                    type="password" 
-                    className="input-pass" 
-                    placeholder="Ingrese su contraseña" 
-                    name = "password"
-                    onChange={this.handleChange}
-                />
-                <button className="login-button" onClick={this.handleLogin}>Login</button>
-                {/* <Link exact to="/" className="login-button">Login</Link> */}
-            </form>
+            <>
+                {
+                    this.state.auth && (
+                        <Redirect to="/backoffice" />
+                    )
+                }
+
+                <form className="login">
+                    <h2 className="login-title">Login</h2>
+                    <input 
+                        type="text" 
+                        className="input-user" 
+                        placeholder="Ingrese su usuario" 
+                        name="admin"
+                        value={this.state.admin}
+                        onChange={this.handleChange} 
+                    />
+                    <input 
+                        type="password" 
+                        className="input-pass"
+                        placeholder="Ingrese su contraseña" 
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                    />
+                    <button className="login-button" onClick={this.handleSubmit}>Login</button>
+                </form>
+                {
+                    this.state.logged && (
+                        <div className="logged-message">Usuario o Contraseña incorrecto</div>
+                    )
+                }
+            </>
         )
     }
 }
