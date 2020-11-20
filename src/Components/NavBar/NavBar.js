@@ -3,6 +3,14 @@ import { NavLink } from "react-router-dom";
 
 class NavBar extends Component {
 
+    constructor(){
+        super();
+
+        this.state = {
+            backUser:false
+        }
+    }
+
     logout = () => {
         localStorage.removeItem("logged");
     }
@@ -21,13 +29,17 @@ class NavBar extends Component {
                             this.props.logged && (
                                 <>
                                     {/* PENDINGS AND BANNERS */}
+                                    <NavLink to="/backoffice" className="button-list-alt">
+                                        PROFESIONALES
+                                    </NavLink>
+
                                     <NavLink to="/pendientes" className="button-list-alt">
                                         PENDIENTES
-                                        </NavLink>
+                                    </NavLink>
 
-                                        <NavLink to="/banners" className="button-list-alt">
-                                            BANNERS
-                                        </NavLink>
+                                    <NavLink to="/banners" className="button-list-alt">
+                                        BANNERS
+                                    </NavLink>
                                 </>
                             )
                         }
