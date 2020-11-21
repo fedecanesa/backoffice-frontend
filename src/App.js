@@ -60,8 +60,7 @@ export default class App extends React.Component {
                     <Route exact path="/pendientes">
                         <NavBar logged={true}/>
                         <div className="main-actions">
-                        <SearchBox />   
-                        <ButtonAdd />        
+                            <SearchBox />   
                         </div>
                        <CardList arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : pending} />
                     </Route>
@@ -69,8 +68,7 @@ export default class App extends React.Component {
                     <Route exact path="/banners">
                         <NavBar logged={true}/>
                         <div className="main-actions">
-                        <SearchBox search={this.search} />   
-                        <ButtonAdd />        
+                            <SearchBox search={this.search} />             
                         </div>
                        <CardList arrayWorkerToShow={this.state.banners} />
                     </Route>

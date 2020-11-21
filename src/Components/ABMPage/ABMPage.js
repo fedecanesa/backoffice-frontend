@@ -59,7 +59,6 @@ export default class ABMPage extends React.Component {
 
                 <div className="main-actions">
                     <SearchBox search={this.search}/>
-                    <ButtonAdd />
                 </div>
                 <CardList 
                     handleClickDelete={this.handleClickDelete} 

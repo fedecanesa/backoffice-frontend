@@ -25,6 +25,7 @@ class CardList extends Component {
                                     arrayWorkerToShow.map(worker => {
                                         return (
                                             <Card
+                                                key={worker._id}
                                                 _id={worker._id}
                                                 name={worker.name}
                                                 job={worker.job}

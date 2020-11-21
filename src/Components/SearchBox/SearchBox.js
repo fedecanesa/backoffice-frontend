@@ -16,12 +16,10 @@ class SearchBox extends Component {
     searchHandler = ()=>{
         const { subjectSearch, search } = this.state;
 
-        search && (
-            fetch(`https://api-servi-oficios.herokuapp.com/professionals/${subjectSearch}${search}`)
-            .then( response => response.json() )
-            .then( jsonResponse => {console.log(jsonResponse);this.props.search(jsonResponse)})
-            .catch( error => {/* TODO catchHandler */})
-        )
+        fetch(`https://api-servi-oficios.herokuapp.com/professionals/${subjectSearch}${search}`)
+        .then( response => response.json() )
+        .then( jsonResponse => {this.props.search(jsonResponse)})
+        .catch( error => {/* TODO catchHandler */})
     }
 
     render() {
@@ -34,7 +32,7 @@ class SearchBox extends Component {
                     <option value="zones/" >Zona</option>
                 </select>
                 <input type="search" name="search"className="searchbox-search" placeholder="Buscar" onChange={this.changeHandler}/>
-                <button className="searchbox-button" onClick={this.searchHandler}><i class="fas fa-search"></i> BUSCAR</button>
+                <button className="searchbox-button" onClick={this.searchHandler}><i className="fas fa-search"></i> BUSCAR</button>
             </div>
         );
     }
