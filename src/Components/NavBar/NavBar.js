@@ -29,7 +29,7 @@ class NavBar extends Component {
                             this.props.logged && (
                                 <>
                                     {/* PENDINGS AND BANNERS */}
-                                    <NavLink to="/backoffice" className="button-list-alt">
+                                    <NavLink to="/profesionales" className="button-list-alt">
                                         PROFESIONALES
                                     </NavLink>
 
