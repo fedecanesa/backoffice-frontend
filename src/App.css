@@ -3,8 +3,16 @@
     font-size: 1.7rem;
     max-width: 1024px;
     margin: auto;
-    margin-bottom: 4rem;
     text-transform: uppercase;
+}
+
+.app-description {
+    font-size: 1.2rem;
+    max-width: 1024px;
+    margin: auto;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: rgb(100, 100, 100);
 }
 
 .main-actions {
@@ -114,6 +122,14 @@ button , input {
     padding: .5rem;
 }
 
+.orderByDate {
+    background: transparent;
+    border: none !important;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .buttons-container {
     display: flex;
     justify-content: space-evenly;
@@ -155,6 +171,16 @@ button , input {
 
 .button-delete {
     background-color: rgb(204, 55, 55);
+}
+
+.button-see {
+    background-color: orange;
+    color: black;
+    width: 8rem;
+}
+
+.button-see:hover {
+    background-color: rgb(255, 186, 59);
 }
 
 .fa-trash-alt, .fa-edit {
