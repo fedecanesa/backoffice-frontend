@@ -60,13 +60,13 @@ export default class Login extends React.Component {
             <>
                 {
                     this.state.auth && (
-                        <Redirect to="/backoffice" />
+                        <Redirect to="/profesionales" />
                     )
                 }
 
                 {
                     this.state.backUser && (
-                        <Redirect to="/backoffice" />
+                        <Redirect to="/profesionales" />
                     )
                 }
 
