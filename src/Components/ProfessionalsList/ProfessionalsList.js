@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from "../Card/Card";
+import ProfessionalCard from "../ProfessionalCard/ProfessionalCard";
 
 class CardList extends Component {
     render() {
@@ -24,7 +24,7 @@ class CardList extends Component {
                                 {
                                     arrayWorkerToShow.map(worker => {
                                         return (
-                                            <Card
+                                            <ProfessionalCard
                                                 key={worker._id}
                                                 _id={worker._id}
                                                 name={worker.name}
