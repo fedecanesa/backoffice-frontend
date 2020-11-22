@@ -10,8 +10,7 @@ export default class PendingsPage extends Component
     constructor() {
         super();
         this.state = {
-            arrayResponse: [],
-            arrayWorkerToShow: []
+            arrayResponse: []
         }
     }
 
@@ -27,14 +26,13 @@ export default class PendingsPage extends Component
     }
 
     render () {
-        const { arrayResponse, arrayWorkerToShow } = this.state;
+        const { arrayResponse } = this.state;
         return (
             <>
                 <div className="main-actions">
-                    <SearchBox search={this.search}/>   
+                    <SearchBox search={this.search}/> 
                 </div>
-                
-                <PendingsList arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse} />
+                { arrayResponse.length > 0 &&  ( <PendingsList arrayWorkerToShow={arrayResponse} /> ) }
             </>
         )
     }

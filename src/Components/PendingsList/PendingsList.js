@@ -1,15 +1,43 @@
 import React, { Component } from 'react';
 import PendingCard from "./../PendingCard/PendingCard";
 
-class CardList extends Component {
-
+class CardList extends Component
+{
+    constructor(props) {
+        super(props);
+        this.state = {
+            arrayWorkerToShow: [],
+            sortedByPriority: false
+        }
+    }
     orderByDate = ()=>{
-        console.log("Ordenar lista por Fecha, e invertir en cada click")
-        /* TODO */
+        const { arrayWorkerToShow, sortedByPriority } = this.state;
+        let auxArrayWorkers = [...arrayWorkerToShow];
+        if ( sortedByPriority ) {
+            auxArrayWorkers.sort( (worker0, worker1)=>{
+                if (worker0.registrationDate > worker1.registrationDate) { return 1 }
+                if (worker0.registrationDate < worker1.registrationDate) { return -1 }
+                return 0;
+            } )
+            this.setState({arrayWorkerToShow: auxArrayWorkers, sortedByPriority: false});
+        }
+        else {
+            auxArrayWorkers.sort( (worker0, worker1)=>{
+                if (worker0.registrationDate > worker1.registrationDate) { return -1 }
+                if (worker0.registrationDate < worker1.registrationDate) { return 1 }
+                return 0;
+            } )
+            this.setState({arrayWorkerToShow: auxArrayWorkers, sortedByPriority: true});
+        }
+    }
+    
+
+    componentDidMount() {
+        this.setState({arrayWorkerToShow: this.props.arrayWorkerToShow})
     }
 
     render() {
-        const { arrayWorkerToShow } = this.props;
+        const { arrayWorkerToShow } = this.state;
         return (
             <section className="cardlist-container">
             {
@@ -39,7 +67,7 @@ class CardList extends Component {
                                         return (
                                             <PendingCard
                                                 key={worker._id}
-                                                registrationDate={worker.registrationDate}
+                                                registrationDate={worker.registrationDate.slice(0,10)}
                                                 name={worker.name}
                                                 job={worker.job}
                                                 zone={worker.zone}
