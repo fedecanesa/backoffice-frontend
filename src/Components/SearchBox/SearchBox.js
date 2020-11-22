@@ -13,6 +13,7 @@ class SearchBox extends Component {
     changeHandler = (event)=>{
         this.setState({ [event.target.name]: event.target.value})
     }
+    
     searchHandler = ()=>{
         const { subjectSearch, search } = this.state;
 
