@@ -1,18 +1,23 @@
 import React from "react";
 import SearchBox from "../SearchBox/SearchBox";
-import ButtonAdd from "../ButtonAdd/ButtonAdd";
-import CardList from "../CardList/CardList";
+import ProfessionalsList from "../ProfessionalsList/ProfessionalsList";
 import { Redirect } from "react-router-dom";
 
-export default class ABMPage extends React.Component {
+export default class ProfessionalsPage extends React.Component {
     constructor(){
         super();
         this.state = {
-            arrayResponse: [],
             logged: true,
+
+            arrayResponse: [],
             arrayWorkerToShow: []
         }
     }
+
+    search = (array)=>{
+        this.setState({ arrayWorkerToShow: array });
+    }
+
 
     componentDidMount(){
         fetch("https://api-servi-oficios.herokuapp.com/professionals") /* TODO */
@@ -60,7 +65,7 @@ export default class ABMPage extends React.Component {
                 <div className="main-actions">
                     <SearchBox search={this.search}/>
                 </div>
-                <CardList 
+                <ProfessionalsList 
                     handleClickDelete={this.handleClickDelete} 
                     arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse}
                 />
