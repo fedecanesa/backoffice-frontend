@@ -10,16 +10,20 @@ class SearchBox extends Component {
         }
     }
 
+
+    normalizeString = (string)=>{return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}
+
     changeHandler = (event)=>{
         this.setState({ [event.target.name]: event.target.value})
     }
     
     searchHandler = ()=>{
         const { subjectSearch, search } = this.state;
+        const { collection } = this.props;
 
-        fetch(`https://api-servi-oficios.herokuapp.com/professionals/${subjectSearch}${search}`)
+        fetch(`https://api-servi-oficios.herokuapp.com/${collection}/${subjectSearch}${this.normalizeString(search)}`)
         .then( response => response.json() )
-        .then( jsonResponse => {this.props.search(jsonResponse)})
+        .then( jsonResponse => {console.log(jsonResponse); this.props.search(jsonResponse)})
         .catch( error => {/* TODO catchHandler */})
     }
 
@@ -33,7 +37,7 @@ class SearchBox extends Component {
                     <option value="zones/" >Zona</option>
                 </select>
                 <input type="search" name="search"className="searchbox-search" placeholder="Buscar" onChange={this.changeHandler}/>
-                <button className="searchbox-button" onClick={this.searchHandler}><i className="fas fa-search"></i> BUSCAR</button>
+                <button className="searchbox-button" onClick={this.searchHandler}><i className="fas fa-search"/> BUSCAR</button>
             </div>
         );
     }

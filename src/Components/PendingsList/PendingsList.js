@@ -31,12 +31,14 @@ class CardList extends Component
         }
     }
     
+    componentWillReceiveProps(props) { this.setState({arrayWorkerToShow: this.props.arrayWorkerToShow}) }
 
     componentDidMount() {
         this.setState({arrayWorkerToShow: this.props.arrayWorkerToShow})
     }
 
     render() {
+        console.log(this.props.arrayWorkerToShow)
         const { arrayWorkerToShow } = this.state;
         return (
             <section className="cardlist-container">
@@ -63,7 +65,7 @@ class CardList extends Component
 
                             <tbody className="table-tbody">
                                 {
-                                    arrayWorkerToShow.map(worker => {
+                                    arrayWorkerToShow && arrayWorkerToShow.map(worker => {
                                         return (
                                             <PendingCard
                                                 key={worker._id}

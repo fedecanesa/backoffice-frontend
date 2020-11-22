@@ -56,14 +56,10 @@ export default class ProfessionalsPage extends React.Component {
         const { arrayResponse, arrayWorkerToShow } = this.state;
         return(
             <>
-                {
-                    !this.state.logged && (
-                        <Redirect to="/" />
-                    )
-                }  
+                { !this.state.logged && ( <Redirect to="/" /> ) }  
 
                 <div className="main-actions">
-                    <SearchBox search={this.search}/>
+                    <SearchBox collection="professionals" search={this.search}/>
                 </div>
                 <ProfessionalsList 
                     handleClickDelete={this.handleClickDelete} 

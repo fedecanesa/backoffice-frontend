@@ -10,11 +10,13 @@ export default class PendingsPage extends Component
     constructor() {
         super();
         this.state = {
-            arrayResponse: []
+            arrayResponse: [],
+            arrayWorkerToShow: []
         }
     }
 
     search = (array)=>{
+        console.log(array)
         this.setState({ arrayWorkerToShow: array });
     }
 
@@ -26,13 +28,23 @@ export default class PendingsPage extends Component
     }
 
     render () {
-        const { arrayResponse } = this.state;
+        let showResponse = false
+        const { arrayResponse, arrayWorkerToShow } = this.state;
         return (
             <>
                 <div className="main-actions">
-                    <SearchBox search={this.search}/> 
+                    <SearchBox collection="pendings" search={this.search}/> 
                 </div>
-                { arrayResponse.length > 0 &&  ( <PendingsList arrayWorkerToShow={arrayResponse} /> ) }
+                { 
+                    showResponse = ( arrayWorkerToShow.length === 0 )
+                }
+                {
+                    showResponse ? ( 
+                        arrayResponse.length > 0 ? (
+                            <PendingsList arrayWorkerToShow={arrayResponse} />
+                                ) : ( " " ) 
+                        ) : ( <PendingsList arrayWorkerToShow={arrayWorkerToShow} />  )
+                }
             </>
         )
     }
