@@ -16,7 +16,6 @@ export default class PendingsPage extends Component
     }
 
     search = (array)=>{
-        console.log(array)
         this.setState({ arrayWorkerToShow: array });
     }
 
@@ -42,7 +41,7 @@ export default class PendingsPage extends Component
                     showResponse ? ( 
                         arrayResponse.length > 0 ? (
                             <PendingsList arrayWorkerToShow={arrayResponse} />
-                                ) : ( " " ) 
+                                ) : ( " " ) /* TODO Renderiza al segundo click en buscar */
                         ) : ( <PendingsList arrayWorkerToShow={arrayWorkerToShow} />  )
                 }
             </>
