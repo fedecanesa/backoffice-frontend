@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class PendingCard extends Component {
 
     seeDetailsHandler = () => {
-        
+        console.log("Ver detalles")
     }
 
     render() {
@@ -28,8 +28,10 @@ export default class PendingCard extends Component {
                             className="card-button button-see"
                             onClick={this.seeDetailsHandler}
                         >
-                            <i className="fas fa-eye" />
-                            {" Ver ficha"}
+                            <a className="goToProfile" href="http://localhost:3000/profesionales" target="_blank">
+                                <i className="fas fa-eye" />
+                                {" Ver ficha"}
+                            </a>
                         </button>                    
                     </td>
                 </tr>

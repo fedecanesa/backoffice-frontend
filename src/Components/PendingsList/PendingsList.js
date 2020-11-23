@@ -38,7 +38,6 @@ class CardList extends Component
     }
 
     render() {
-        console.log(this.props.arrayWorkerToShow)
         const { arrayWorkerToShow } = this.state;
         return (
             <section className="cardlist-container">
@@ -73,7 +72,6 @@ class CardList extends Component
                                                 name={worker.name}
                                                 job={worker.job}
                                                 zone={worker.zone}
-                                                handleClickDelete={this.props.handleClickDelete}
                                             />
                                         )
                                     })
