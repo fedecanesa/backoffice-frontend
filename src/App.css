@@ -320,3 +320,8 @@ button , input {
 .button-list-alt:hover {
     text-decoration: underline;
 }
+
+a.goToProfile {
+    color: white;
+    text-decoration: none;
+}
