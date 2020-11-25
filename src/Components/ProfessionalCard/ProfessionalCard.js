@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-class Card extends Component {
+export default class ProfessioalCard extends Component {
     handleClickDelete = (e) => {
         this.props.handleClickDelete(e.target.value);
     }
@@ -44,5 +44,3 @@ class Card extends Component {
         );
     }
 }
-
-export default Card;

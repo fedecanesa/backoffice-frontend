@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SearchBox extends Component {
+export default class SearchBox extends Component {
     constructor() {
         super();
         this.state = {
@@ -43,4 +43,3 @@ class SearchBox extends Component {
     }
 }
 
-export default SearchBox;
