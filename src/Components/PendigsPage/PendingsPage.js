@@ -47,9 +47,9 @@ export default class PendingsPage extends Component
                 {
                     showResponse ? ( 
                         arrayResponse.length > 0 ? (
-                            <PendingsList arrayWorkerToShow={arrayResponse} />
+                            <PendingsList arrayWorkerToShow={arrayResponse} loadData={this.props.loadData} />
                                 ) : ( " " ) /* TODO Renderiza al segundo click en buscar */
-                        ) : ( <PendingsList arrayWorkerToShow={arrayWorkerToShow} />  )
+                        ) : ( <PendingsList arrayWorkerToShow={arrayWorkerToShow} loadData={this.props.loadData} />  )
                 }
             </>
         )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PendingCard from "./../PendingCard/PendingCard";
 
-class CardList extends Component
+export default class PendigList extends Component
 {
     constructor(props) {
         super(props);
@@ -64,14 +64,12 @@ class CardList extends Component
 
                             <tbody className="table-tbody">
                                 {
-                                    arrayWorkerToShow && arrayWorkerToShow.map(worker => {
+                                    arrayWorkerToShow[0] && arrayWorkerToShow.map(worker => {
                                         return (
                                             <PendingCard
-                                                key={worker._id}
-                                                registrationDate={worker.registrationDate.slice(0,10)}
-                                                name={worker.name}
-                                                job={worker.job}
-                                                zone={worker.zone}
+                                                key={worker.id}
+                                                worker={worker}
+                                                loadData={this.props.loadData}
                                             />
                                         )
                                     })
@@ -85,5 +83,3 @@ class CardList extends Component
         );
     }
 }
-
-export default CardList;

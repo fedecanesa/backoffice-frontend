@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import swal from "sweetalert";
 
-class Card extends Component {
-   
 
+
+    
+
+export default class ProfessioalCard extends Component {
+   
     confirmAlert = (e) => {
         swal({
             title: "¿Estás seguro que desea eliminar este profesional?",
@@ -65,5 +68,3 @@ class Card extends Component {
         );
     }
 }
-
-export default Card;
