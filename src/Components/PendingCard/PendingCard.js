@@ -19,9 +19,11 @@ export default class PendingCard extends Component {
                     <td className="card-date">{registrationDate.slice(0,10)}</td>
                     <td>
                     {
-                        name[0].toUpperCase()+name.slice(1, name.indexOf(" "))
-                        + " " 
-                        + name[name.indexOf(" ")+1].toUpperCase()+name.slice(name.indexOf(" ")+2)
+                        name && (   
+                            name[0].toUpperCase()+name.slice(1, name.indexOf(" "))
+                            + " " 
+                            + name[name.indexOf(" ")+1].toUpperCase()+name.slice(name.indexOf(" ")+2)
+                        )
                     }
                     </td>
                     <td>{ job && job[0].toUpperCase()+job.slice(1) }</td>
