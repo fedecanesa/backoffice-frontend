@@ -1,9 +1,31 @@
 import React, { Component } from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import swal from "sweetalert";
+
+
+
+    
 
 export default class ProfessioalCard extends Component {
-    handleClickDelete = (e) => {
-        this.props.handleClickDelete(e.target.value);
+   
+    confirmAlert = (e) => {
+        swal({
+            title: "¿Estás seguro que desea eliminar?",
+            text: "Una vez eliminado, no podrás volver atras",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+              this.props.handleClickDelete(e.target.value)
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+        });
     }
 
     render() {
@@ -30,11 +52,13 @@ export default class ProfessioalCard extends Component {
                     <td>{ job && ( job[0].toUpperCase()+job.slice(1) ) }</td>
                     <td>{ zone && ( zone[0].toUpperCase()+zone.slice(1) ) }</td>
                     <td className="buttons-container">
-                        <button className="card-button button-edit">
+                        <button 
+                            
+                            className="card-button button-edit">
                             <i className="fas fa-edit"></i>
                             Editar
                         </button>
-                        <button title="¿Esta seguro que desea eliminarlo?" className="card-button button-delete" value={this.props._id} onClick={this.handleClickDelete}>
+                        <button title="¿Esta seguro que desea eliminarlo?" className="card-button button-delete" value={this.props._id} onClick={this.confirmAlert}>
                             <i className="fas fa-trash-alt"></i>
                             Borrar
                         </button>

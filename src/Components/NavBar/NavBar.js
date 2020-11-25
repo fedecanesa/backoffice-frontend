@@ -12,7 +12,7 @@ class NavBar extends Component {
     }
 
     logout = () => {
-        localStorage.removeItem("logged");
+        localStorage.removeItem("token");
     }
   
     render() {
