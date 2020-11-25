@@ -18,14 +18,12 @@ export default class ProfessionalsPage extends React.Component {
         this.setState({ arrayWorkerToShow: array });
     }
 
-
     componentDidMount(){
         fetch("https://api-servi-oficios.herokuapp.com/professionals") /* TODO */
         .then((response)=>response.json())
         .then((jsonResponse)=>{this.setState({arrayResponse: jsonResponse})})
         .catch((error)=>{ /* TODO catch handler */ });
     }
-
 
     handleClickDelete = (id) => {
         const auxArrayResponse = this.state.arrayResponse;
@@ -39,13 +37,14 @@ export default class ProfessionalsPage extends React.Component {
         });
     }
 
+
+
     search = (array)=>{
         this.setState({ arrayWorkerToShow: array });
     }
 
 
-    render(){
-
+    render() {
         const { arrayResponse, arrayWorkerToShow } = this.state;
         return(
             <>
@@ -59,6 +58,7 @@ export default class ProfessionalsPage extends React.Component {
                     <SearchBox collection="professionals" search={this.search}/>
                 </div>
                 <ProfessionalsList 
+                    editConfirm={this.props.editConfirm}
                     handleClickDelete={this.handleClickDelete} 
                     arrayWorkerToShow={arrayWorkerToShow.length > 0 ? arrayWorkerToShow : arrayResponse}
                 />

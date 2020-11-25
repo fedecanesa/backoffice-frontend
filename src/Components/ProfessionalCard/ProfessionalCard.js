@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import swal from "sweetalert";
-
-
+import {NavLink} from "react-router-dom";
 
     
-
 export default class ProfessioalCard extends Component {
+
    
     confirmAlert = (e) => {
         swal({
@@ -28,10 +27,28 @@ export default class ProfessioalCard extends Component {
         });
     }
 
+    handleClickEdit = (e) => {
+        
+        const OBJ_PROF_EDIT = {
+            name: this.props.name,
+            dni: this.props.dni,
+            email: this.props.email,
+            phone:this.props.phone,
+            job: this.props.job,
+            seniority: this.props.seniority,
+            imgUrl: this.props.imgUrl,
+            hourPrice: this.props.hourPrice,
+            currency: this.props.currency,
+            zone: this.props.zone,
+            description:this.props.description,
+        }
+
+        this.props.editConfirm(OBJ_PROF_EDIT);
+    }
+
     render() {
 
-        const { _id, name, job, zone } = this.props;
-
+        const { _id, name, job, zone , dni , description , hourPrice , phone , email, seniority , imgUrl} = this.props;
         return (
             <>
                 <tr className="card-row">
@@ -52,13 +69,18 @@ export default class ProfessioalCard extends Component {
                     <td>{ job && ( job[0].toUpperCase()+job.slice(1) ) }</td>
                     <td>{ zone && ( zone[0].toUpperCase()+zone.slice(1) ) }</td>
                     <td className="buttons-container">
-                        <button 
-                            
+                        <NavLink 
+                            to="/editarperfil"
+                            onClick={this.handleClickEdit} 
                             className="card-button button-edit">
                             <i className="fas fa-edit"></i>
                             Editar
-                        </button>
-                        <button title="¿Esta seguro que desea eliminarlo?" className="card-button button-delete" value={this.props._id} onClick={this.confirmAlert}>
+                        </NavLink>
+
+                        <button 
+                            className="card-button button-delete" 
+                            value={this.props._id} 
+                            onClick={this.confirmAlert}>
                             <i className="fas fa-trash-alt"></i>
                             Borrar
                         </button>

@@ -6,6 +6,7 @@ import PendingsPage from "./Components/PendigsPage/PendingsPage";
 import Login from "./Components/Login/Login";
 import React from "react";
 import PendingProfile from "./Components/PendigProfile/PendingProfile";
+import EditProfile from "./Components/EditProfile/EditProfile";
 
 
 export default class App extends React.Component {
@@ -14,13 +15,18 @@ export default class App extends React.Component {
         super();
 
         this.state = {
-            professionalData:{}
+            professionalData:{},
+            professionaEdit:{}
         }
     }
 
     loadData = (worker) => {
 		this.setState({professionalData: worker});
-	}
+    }
+    
+    editConfirm = (data) => {
+        this.setState({professionaEdit: data})
+    }
 
     render() {
         return (
@@ -36,8 +42,12 @@ export default class App extends React.Component {
                             <NavBar logged={true}/> 
                             <h2 className="app-subtitle">Backoffice ServiOficios</h2>
                             <h4 className="app-description ">Lista de profesionales</h4>
-                            <ProfessionalsPage />
+                            <ProfessionalsPage editConfirm={this.editConfirm}/>
                         </Route>
+                        {/* <Route exact to="/editarperfil">
+                            <NavBar logged={true}/> 
+                            <EditProfile data={this.state.professionaEdit}/>
+                        </Route> */}
 
                         <Route exact path="/pendientes">
                             <NavBar logged={true}/>
