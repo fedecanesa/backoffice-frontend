@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import SearchBox from "./../SearchBox/SearchBox";
 import PendingsList from "./../PendingsList/PendingsList"
+import { Redirect } from 'react-router-dom';
 
 
 export default class PendingsPage extends Component
@@ -31,6 +32,12 @@ export default class PendingsPage extends Component
         const { arrayResponse, arrayWorkerToShow } = this.state;
         return (
             <>
+                {
+                    localStorage.getItem("token") === null && (
+                        <Redirect to="/" />
+                    )
+                } 
+
                 <div className="main-actions">
                     <SearchBox collection="pendings" search={this.search}/> 
                 </div>

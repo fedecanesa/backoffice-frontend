@@ -46,17 +46,14 @@ export default class ProfessionalsPage extends React.Component {
 
     render(){
 
-        //LOGIN
-        const logged = localStorage.getItem("logged") || null;
-
-        if(logged === null) {
-            this.setState({logged:false});
-        }
-
         const { arrayResponse, arrayWorkerToShow } = this.state;
         return(
             <>
-                { !this.state.logged && ( <Redirect to="/" /> ) }  
+                {
+                    localStorage.getItem("token") === null && (
+                        <Redirect to="/" />
+                    )
+                } 
 
                 <div className="main-actions">
                     <SearchBox collection="professionals" search={this.search}/>

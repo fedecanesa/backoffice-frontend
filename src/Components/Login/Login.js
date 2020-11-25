@@ -9,8 +9,7 @@ export default class Login extends React.Component {
             admin: "",
             password: "",
             auth:false,
-            logged:false,
-            backUser:false
+            logged:false
         }
     }
 
@@ -25,7 +24,7 @@ export default class Login extends React.Component {
         const { admin, password } = this.state;
         
         if(admin && password) {
-            const RECURSO_CONSULTAS = "https://api-servi-oficios.herokuapp.com/admins";
+            const RECURSO_CONSULTAS = "https://api-servi-oficios.herokuapp.com/login";
             const OBJ_ADMIN = { admin , password };
             
             fetch(RECURSO_CONSULTAS, {
@@ -33,14 +32,14 @@ export default class Login extends React.Component {
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(OBJ_ADMIN)})
                 .then(res => res.json())
-                .then(data => { 
+                .then(data => {
 
-                    if(data.isAuth) {
-                        localStorage.setItem("logged", "true");
+                    if(data.token) {
+                        localStorage.setItem("token", data.token);
                         this.setState({auth:true})
                     }
                     else {
-                        this.setState({logged:true});
+                        this.setState({logged:true}); //ERROR MESSAGE IN UI
                     }
 
                 })
@@ -49,12 +48,6 @@ export default class Login extends React.Component {
     }
 
     render(){
-
-        const logged = localStorage.getItem("logged") || null;
-
-        if(logged === "true") {
-            this.setState({backUser:true});
-        }
 
         return(
             <>
@@ -65,10 +58,10 @@ export default class Login extends React.Component {
                 }
 
                 {
-                    this.state.backUser && (
+                    localStorage.getItem("token") !== null && (
                         <Redirect to="/profesionales" />
                     )
-                }
+                } 
 
                 <form className="login">
                     <h2 className="login-title">Login</h2>
