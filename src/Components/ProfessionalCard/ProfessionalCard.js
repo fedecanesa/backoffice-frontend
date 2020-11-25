@@ -7,7 +7,7 @@ class Card extends Component {
 
     confirmAlert = (e) => {
         swal({
-            title: "¿Estás seguro que desea eliminar?",
+            title: "¿Estás seguro que desea eliminar este profesional?",
             text: "Una vez eliminado, no podrás volver atras",
             icon: "warning",
             buttons: true,
@@ -15,12 +15,12 @@ class Card extends Component {
         })
         .then((willDelete) => {
             if (willDelete) {
-              swal("Poof! Your imaginary file has been deleted!", {
+              swal("El perfil ha sido eliminado", {
                 icon: "success",
               });
               this.props.handleClickDelete(e.target.value)
             } else {
-              swal("Your imaginary file is safe!");
+              swal("El perfil se encuentra a salvo.");
             }
         });
     }
