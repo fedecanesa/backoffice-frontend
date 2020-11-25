@@ -339,6 +339,7 @@ s
     max-width: 500px;
     background-color: white;
     border-radius: 5px;
+    margin-top: 15vh;
 }
 
 .input-user, .input-pass {
@@ -483,9 +484,15 @@ a.goToProfile {
 
 .profile-name {
     color: black;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: -.5rem;;
+}
+
+.profile-email,
+.profile-phone,
+.profile-dni {
+    font-size: 1rem;
 }
 
 .profile-job {
@@ -506,11 +513,20 @@ a.goToProfile {
     font-weight: 700;
 }
 
+.profile-data {
+    font-size: .8rem;
+    margin-top: .5rem;
+}
 
+.profile-numeros {
+    font-size: .85rem;
+}
 
 .profile-description {
-    color: rgb(20, 20, 20);
-    margin-top: 0rem;
+    color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    width: 90%;
 }
 
 .profile-buttons {
@@ -526,12 +542,22 @@ a.goToProfile {
 }
 
 .profile-button {
+    border: none;
     color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 8rem;
     height: 2.5rem;
     border-radius: 7px;
     font-weight: 600;
+    outline: none;
+}
 
+.profile-button:hover {
+    opacity: .8;
 }
 
 .profile-button-accept {
@@ -552,6 +578,7 @@ a.goToProfile {
 .fa-user-check, .fa-user-times {
     color: white;
     font-size: 1.5rem;
+    margin-right: .5rem;
 }
 
 .profile-button-text {

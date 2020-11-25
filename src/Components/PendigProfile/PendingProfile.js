@@ -87,21 +87,21 @@ export default class PendingProfile extends Component {
 
                         {/* Worker HOUR PRICE */}
                         <div className="profile-price">
-                            <span className="profile-currency" >{currency && ( currency.toUpperCase() )}</span>
                             <span className="profile-hour-price" >{" $"+hourPrice}</span>
                         </div>
 
-                        {/* Worker EMAIL */}
-                        <div className="profile-email">{email}</div>
-
-                        {/* Worker PHONE */}
-                        <div className="profile-phone">{"Tel: "+phone}</div>
-
-                        {/* Worker DNI */}
-                        <div className="profile-">{"D.N.I: "+dni}</div>
-
                         <p className="profile-description">{description}</p>
+                        <div className="profile-data">
+                            {/* Worker EMAIL */}
+                            <div className="profile-email">Email: {email}</div>
 
+                            {/* Worker PHONE */}
+                            <div className="profile-phone">Tel: <span className="profile-numeros">{phone}</span></div>
+
+                            {/* Worker DNI */}
+                            <div className="profile-dni">Dni: <span className="profile-numeros">{dni}</span></div>
+                        </div>
+                        
 
                         {/* BUTTONS */}
                         <div className="profile-buttons" >
